@@ -14,13 +14,14 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-fugitive'
 
 Plugin 'SirVer/ultisnips'
-" Plugin 'honza/vim-snippets'
 
 " Plugin 'Valloric/YouCompleteMe'
 
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 Plugin 'chriskempson/base16-vim'
 
 " The following are examples of different formats supported.
@@ -58,6 +59,8 @@ filetype plugin indent on
 set autoindent
 set copyindent
 
+set hidden
+
 set backspace=indent,eol,start
 set complete-=i
 
@@ -65,6 +68,7 @@ set tabstop=4
 set shiftwidth=4
 set shiftround
 set smarttab
+set expandtab
 
 set ignorecase
 set incsearch
@@ -72,6 +76,9 @@ set incsearch
 set smartcase
 " Use <C-L> to clear the highlighting of :set hlsearch.
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+
+nnoremap n nzz
+nnoremap N Nzz
 
 set laststatus=2
 set ruler
@@ -127,18 +134,28 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
+cnoremap <c-n> <down>
+cnoremap <c-p> <up>
+
 set pastetoggle=<F2>
 set mouse=a
 
 let mapleader=" "
 
+" inoremap <C-U> <C-G>u<C-U>
+
 nnoremap <silent> <Leader>l :set list!<CR>
-inoremap <C-U> <C-G>u<C-U>
+nnoremap <Leader>w :w<CR>
+" nnoremap <Leader>W :wa<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>x :x<CR>
+nnoremap <Leader>d :bd<CR>
+nnoremap <Leader>b :buffers<CR>
 
-nnoremap <Leader>; :
+" quick sh Ex command
+nnoremap <Leader>1 :!
 
-inoremap {{ {
-inoremap {<CR> {<CR>}<Esc>O
+inoremap {<CR> {<CR><BS>}<Esc>O
 
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC
 
@@ -146,9 +163,12 @@ let g:syntastic_cpp_checkers = ["gcc"]
 let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_auto_refresh_includes = 1
 
-let g:syntastic_cpp_include_dirs = [ '/usr/include' ]
+let g:syntastic_cpp_include_dirs = [ '/usr/include', '.', '..', '../*']
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = '-Wall -Wextra -Wpedantic -std=c++14'
+
+let g:syntastic_python_python_exec = 'python3'
+let g:syntastic_python_checkers = ['flake8', 'python']
 
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
