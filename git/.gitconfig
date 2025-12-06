@@ -1,17 +1,26 @@
 [user]
 	name = Ricardo A. López Torres
-	email = ricardolopez93@gmail.com
-[url "https://invent.kde.org/"]
-	insteadOf = kde:
-[url "ssh://git@invent.kde.org/"]
-	pushInsteadOf = kde:
-[init]
-	defaultBranch = main
+	email = ricardo.a.lopez.torres1@gmail.com
+
 [core]
-	editor = vim
+  editor = nvim
+
+[init]
+  defaultBranch = main
+
+[pull]
+  rebase = false
+
+[push]
+  default = current
+
+[color]
+  ui = auto
+
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
