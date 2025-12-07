@@ -128,7 +128,7 @@ alias :q="exit"
 
 export GBDK_HOME=$HOME/dev/GBdev/gbdk/
 
-source $HOME/VulkanSDK/Releases/1.4.321.1/setup-env.sh
+source $HOME/VulkanSDK/Releases/1.4.328.1/setup-env.sh
 
 if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
     echo "here"
