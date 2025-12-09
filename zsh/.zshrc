@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="sunrise"
+ZSH_THEME="sunrise" # set by `omz`
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -128,12 +128,16 @@ alias :q="exit"
 
 export GBDK_HOME=$HOME/dev/GBdev/gbdk/
 
-source $HOME/VulkanSDK/Releases/1.4.328.1/setup-env.sh
+# source $HOME/VulkanSDK/Releases/1.4.328.1/setup-env.sh
 
-if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
-    echo "here"
-    exec tmux new-session -A -s ${USER} -c ${HOME}/dev >/dev/null 2>&1
-fi
+# RenderDoc 1.41 (manual tarball install)
+export PATH="/opt/renderdoc_1.41/bin:$PATH"
+export VK_LAYER_PATH="/opt/renderdoc_1.41/share/vulkan/explicit_layer.d"
+
+# if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
+#     echo "here"
+#     exec tmux new-session -A -s ${USER} -c ${HOME}/dev >/dev/null 2>&1
+# fi
 alias find="find 2>/dev/null"
 
 # unalias rm
