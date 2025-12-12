@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="sunrise" # set by `omz`
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -70,8 +70,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-# plugins=(git)
-plugins=()
+plugins=(git aliases colorize command-not-found themes timer z zsh-navigation-tools)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -109,17 +108,11 @@ USE_POWERLINE="true"
 # Has weird character width
 # Example:
 #    is not a diamond
-HAS_WIDECHARS="false"
-# Source manjaro-zsh-configuration
-if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
-  source /usr/share/zsh/manjaro-zsh-config
-fi
-# # Use manjaro zsh prompt
-if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
-  source /usr/share/zsh/manjaro-zsh-prompt
-fi
+HAS_WIDECHARS="true"
 
 source $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/manjaro-zsh-config
 
 export LS_OPTIONS="--color=auto -AFGhX --group-directories-first"
 alias ls="ls $LS_OPTIONS"
@@ -128,16 +121,16 @@ alias :q="exit"
 
 export GBDK_HOME=$HOME/dev/GBdev/gbdk/
 
-# source $HOME/VulkanSDK/Releases/1.4.328.1/setup-env.sh
+source $HOME/VulkanSDK/Releases/1.4.335.0/setup-env.sh
 
 # RenderDoc 1.41 (manual tarball install)
-export PATH="/opt/renderdoc_1.41/bin:$PATH"
-export VK_LAYER_PATH="/opt/renderdoc_1.41/share/vulkan/explicit_layer.d"
+# export PATH="/opt/renderdoc_1.41/bin:$PATH"
+# export VK_LAYER_PATH="/opt/renderdoc_1.41/share/vulkan/explicit_layer.d"
 
-# if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
-#     echo "here"
-#     exec tmux new-session -A -s ${USER} -c ${HOME}/dev >/dev/null 2>&1
-# fi
+if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
+    exec tmux new-session -A -s ${USER} -c ${HOME}/dev >/dev/null 2>&1
+fi
+
 alias find="find 2>/dev/null"
 
 # unalias rm

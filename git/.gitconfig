@@ -3,19 +3,19 @@
 	email = ricardo.a.lopez.torres1@gmail.com
 
 [core]
-  editor = nvim
+    editor = nvim
 
 [init]
-  defaultBranch = main
+    defaultBranch = main
 
-[pull]
-  rebase = false
+[commit]
+    verbose = true
 
-[push]
-  default = current
+[advice]
+    detachedHead = false
 
 [color]
-  ui = auto
+    ui = auto
 
 [credential "https://github.com"]
 	helper = 
