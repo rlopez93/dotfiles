@@ -11,6 +11,9 @@
 [commit]
     verbose = true
 
+[push]
+    autoSetupRemote = true
+
 [advice]
     detachedHead = false
 

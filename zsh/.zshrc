@@ -132,5 +132,6 @@ if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
 fi
 
 alias find="find 2>/dev/null"
+alias catfiles="head --lines=-0"
 
 # unalias rm
